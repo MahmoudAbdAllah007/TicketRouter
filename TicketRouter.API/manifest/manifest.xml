@@ -1,1 +1,125 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xsi:type="MailApp">
+	<Id>f3b4b2a0-1234-4d56-9abc-987654321000</Id>
+	<Version>1.0.0.0</Version>
+	<ProviderName>Ticket Routing Add-in</ProviderName>
+	<DefaultLocale>en-US</DefaultLocale>
+	<DisplayName DefaultValue="Ticket Router"/>
+	<Description DefaultValue="Route emails by TrackingID# pattern into ticket folders"/>
+	<IconUrl DefaultValue="https://localhost:5001/client/assets/icon-32.png"/>
+	<HighResolutionIconUrl DefaultValue="https://localhost:5001/client/assets/icon-64.png"/>
+
+	<AppDomains>
+		<AppDomain>localhost</AppDomain>
+	</AppDomains>
+
+	<Hosts>
+		<Host Name="Mailbox"/>
+	</Hosts>
+
+	<Requirements>
+		<Sets DefaultMinVersion="1.13">
+			<Set Name="Mailbox" MinVersion="1.13"/>
+		</Sets>
+	</Requirements>
+
+	<FormSettings>
+		<Form xsi:type="ItemRead">
+			<DesktopSettings>
+				<SourceLocation DefaultValue="https://localhost:5001/client/taskpane.html"/>
+			</DesktopSettings>
+		</Form>
+	</FormSettings>
+
+	<Permissions>ReadWriteMailbox</Permissions>
+
+	<!-- SSO: set to your Azure AD app's ClientId -->
+	<WebApplicationInfo>
+		<Id>28e7ca7f-b984-4b33-b03b-f548142f89fb</Id>
+		<Resource>api://28e7ca7f-b984-4b33-b03b-f548142f89fb</Resource>
+	</WebApplicationInfo>
+
+	<VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides"
+					  xsi:type="VersionOverridesV1_1">
+		<Hosts>
+			<Host xsi:type="MailHost">
+				<Runtimes>
+					<Runtime resid="Functions.Script.Url" lifetime="short"/>
+					<Runtime resid="TaskPane.Script.Url" lifetime="long"/>
+				</Runtimes>
+				<DesktopFormFactor>
+
+					<!-- Ribbon group -->
+					<ExtensionPoint xsi:type="MessageReadCommandSurface">
+						<OfficeTab id="TabDefault">
+							<Group id="grp.Ticket" label="Ticket Tools" icon="residRibbonIcon">
+								<Control xsi:type="Button" id="btn.OpenPane">
+									<Label resid="residOpenPaneLabel"/>
+									<Supertip>
+										<Title resid="residOpenPaneLabel"/>
+										<Description resid="residOpenPaneDesc"/>
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="residRibbonIcon"/>
+										<bt:Image size="32" resid="residRibbonIcon"/>
+										<bt:Image size="80" resid="residRibbonIcon"/>
+									</Icon>
+									<Action xsi:type="ShowTaskpane">
+										<SourceLocation resid="TaskPane.Page.Url"/>
+									</Action>
+								</Control>
+								<Control xsi:type="Button" id="btn.CloseTicket">
+									<Label resid="residCloseTicketLabel"/>
+									<Supertip>
+										<Title resid="residCloseTicketLabel"/>
+										<Description resid="residCloseTicketDesc"/>
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="residRibbonIcon"/>
+										<bt:Image size="32" resid="residRibbonIcon"/>
+										<bt:Image size="80" resid="residRibbonIcon"/>
+									</Icon>
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>closeTicket</FunctionName>
+									</Action>
+								</Control>
+							</Group>
+						</OfficeTab>
+					</ExtensionPoint>
+
+					<!-- Event-based activation (Smart Alerts OnMessageSend) -->
+					<ExtensionPoint xsi:type="LaunchEvent">
+						<LaunchEvents>
+							<LaunchEvent Type="OnMessageSend" FunctionName="onMessageSend" SendMode="SoftBlock"/>
+						</LaunchEvents>
+						<SourceLocation resid="Functions.Page.Url"/>
+					</ExtensionPoint>
+
+				</DesktopFormFactor>
+			</Host>
+		</Hosts>
+
+		<Resources>
+			<bt:Urls>
+				<bt:Url id="Functions.Page.Url" DefaultValue="https://localhost:5001/client/functions.html"/>
+				<bt:Url id="TaskPane.Page.Url" DefaultValue="https://localhost:5001/client/taskpane.html"/>
+				<bt:Url id="Functions.Script.Url" DefaultValue="https://localhost:5001/client/functions.js"/>
+				<bt:Url id="TaskPane.Script.Url" DefaultValue="https://localhost:5001/client/taskpane.js"/>
+			</bt:Urls>
+			<bt:ShortStrings>
+				<bt:String id="residOpenPaneLabel" DefaultValue="Route to Ticket"/>
+				<bt:String id="residCloseTicketLabel" DefaultValue="Close Ticket"/>
+			</bt:ShortStrings>
+			<bt:LongStrings>
+				<bt:String id="residOpenPaneDesc" DefaultValue="Open task pane to detect TrackingID and route message."/>
+				<bt:String id="residCloseTicketDesc" DefaultValue="Close the ticket: move folder to Closed and disable routing."/>
+			</bt:LongStrings>
+			<bt:Images>
+				<bt:Image id="residRibbonIcon" DefaultValue="https://localhost:5001/client/assets/icon-32.png"/>
+			</bt:Images>
+		</Resources>
+	</VersionOverrides>
+</OfficeApp>
