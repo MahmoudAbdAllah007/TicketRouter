@@ -3,7 +3,7 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
            xsi:type="MailApp">
-	<Id>f3b4b2a0-1234-4d56-9abc-987654321000</Id>
+	<Id>D93E714C-3281-4F5B-B99F-2D8D88422A48</Id>
 	<Version>1.0.0.0</Version>
 	<ProviderName>Ticket Routing Add-in</ProviderName>
 	<DefaultLocale>en-US</DefaultLocale>
