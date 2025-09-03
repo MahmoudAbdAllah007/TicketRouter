@@ -1,4 +1,4 @@
-@TicketRouter.API_HostAddress = http://localhost:5021
+@TicketRouter.API_HostAddress = http://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:5021
 
 GET {{TicketRouter.API_HostAddress}}/weatherforecast/
 Accept: application/json

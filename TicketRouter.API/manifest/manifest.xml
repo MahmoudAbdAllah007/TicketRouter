@@ -9,11 +9,11 @@
 	<DefaultLocale>en-US</DefaultLocale>
 	<DisplayName DefaultValue="Ticket Router"/>
 	<Description DefaultValue="Route emails by TrackingID# pattern into ticket folders"/>
-	<IconUrl DefaultValue="https://localhost:5001/client/assets/icon-32.png"/>
-	<HighResolutionIconUrl DefaultValue="https://localhost:5001/client/assets/icon-64.png"/>
+	<IconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:5001/client/assets/icon-32.png"/>
+	<HighResolutionIconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:5001/client/assets/icon-64.png"/>
 
 	<AppDomains>
-		<AppDomain>localhost</AppDomain>
+		<AppDomain>ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net</AppDomain>
 	</AppDomains>
 
 	<Hosts>
@@ -29,7 +29,7 @@
 	<FormSettings>
 		<Form xsi:type="ItemRead">
 			<DesktopSettings>
-				<SourceLocation DefaultValue="https://localhost:5001/client/taskpane.html"/>
+				<SourceLocation DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:5001/client/taskpane.html"/>
 			</DesktopSettings>
 		</Form>
 	</FormSettings>
@@ -38,8 +38,8 @@
 
 	<!-- SSO: set to your Azure AD app's ClientId -->
 	<WebApplicationInfo>
-		<Id>28e7ca7f-b984-4b33-b03b-f548142f89fb</Id>
-		<Resource>api://28e7ca7f-b984-4b33-b03b-f548142f89fb</Resource>
+		<Id>4d09ec78-265b-432f-b9dc-cda9a0bb2477</Id>
+		<Resource>api://4d09ec78-265b-432f-b9dc-cda9a0bb2477</Resource>
 	</WebApplicationInfo>
 
 	<VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides"
@@ -104,10 +104,10 @@
 
 		<Resources>
 			<bt:Urls>
-				<bt:Url id="Functions.Page.Url" DefaultValue="https://localhost:5001/client/functions.html"/>
-				<bt:Url id="TaskPane.Page.Url" DefaultValue="https://localhost:5001/client/taskpane.html"/>
-				<bt:Url id="Functions.Script.Url" DefaultValue="https://localhost:5001/client/functions.js"/>
-				<bt:Url id="TaskPane.Script.Url" DefaultValue="https://localhost:5001/client/taskpane.js"/>
+				<bt:Url id="Functions.Page.Url" DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:5001/client/functions.html"/>
+				<bt:Url id="TaskPane.Page.Url" DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:5001/client/taskpane.html"/>
+				<bt:Url id="Functions.Script.Url" DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:5001/client/functions.js"/>
+				<bt:Url id="TaskPane.Script.Url" DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:5001/client/taskpane.js"/>
 			</bt:Urls>
 			<bt:ShortStrings>
 				<bt:String id="residOpenPaneLabel" DefaultValue="Route to Ticket"/>
@@ -118,7 +118,7 @@
 				<bt:String id="residCloseTicketDesc" DefaultValue="Close the ticket: move folder to Closed and disable routing."/>
 			</bt:LongStrings>
 			<bt:Images>
-				<bt:Image id="residRibbonIcon" DefaultValue="https://localhost:5001/client/assets/icon-32.png"/>
+				<bt:Image id="residRibbonIcon" DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:5001/client/assets/icon-32.png"/>
 			</bt:Images>
 		</Resources>
 	</VersionOverrides>
