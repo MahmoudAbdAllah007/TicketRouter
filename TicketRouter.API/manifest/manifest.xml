@@ -2,6 +2,7 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+		   xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
            xsi:type="MailApp">
 	<Id>D93E714C-3281-4F5B-B99F-2D8D88422A48</Id>
 	<Version>1.0.0.0</Version>
@@ -9,8 +10,8 @@
 	<DefaultLocale>en-US</DefaultLocale>
 	<DisplayName DefaultValue="Ticket Router"/>
 	<Description DefaultValue="Route emails by TrackingID# pattern into ticket folders"/>
-	<IconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:5001/client/assets/icon-32.png"/>
-	<HighResolutionIconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:5001/client/assets/icon-64.png"/>
+	<IconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-32.png"/>
+	<HighResolutionIconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-64.png"/>
 
 	<AppDomains>
 		<AppDomain>ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net</AppDomain>
@@ -29,21 +30,25 @@
 	<FormSettings>
 		<Form xsi:type="ItemRead">
 			<DesktopSettings>
-				<SourceLocation DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:5001/client/taskpane.html"/>
+				<SourceLocation DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/taskpane.html"/>
+				<RequestedHeight>350</RequestedHeight>
 			</DesktopSettings>
 		</Form>
 	</FormSettings>
 
 	<Permissions>ReadWriteMailbox</Permissions>
 
-	<!-- SSO: set to your Azure AD app's ClientId -->
-	<WebApplicationInfo>
-		<Id>4d09ec78-265b-432f-b9dc-cda9a0bb2477</Id>
-		<Resource>api://4d09ec78-265b-432f-b9dc-cda9a0bb2477</Resource>
-	</WebApplicationInfo>
+	
+	
 
 	<VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides"
 					  xsi:type="VersionOverridesV1_1">
+		<!-- SSO: set to your Azure AD app's ClientId -->
+		<WebApplicationInfo>
+			<Id>4d09ec78-265b-432f-b9dc-cda9a0bb2477</Id>
+			<Resource>api://4d09ec78-265b-432f-b9dc-cda9a0bb2477</Resource>
+		</WebApplicationInfo>
+		
 		<Hosts>
 			<Host xsi:type="MailHost">
 				<Runtimes>
