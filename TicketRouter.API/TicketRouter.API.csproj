@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\client\assests\" />
+    <Folder Include="wwwroot\client\assets\" />
   </ItemGroup>
 
 </Project>
