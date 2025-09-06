@@ -37,6 +37,5 @@ app.UseStaticFiles();        // serves wwwroot (client html/js/icons)
 app.UseCors("Outlook");
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 app.Run();
