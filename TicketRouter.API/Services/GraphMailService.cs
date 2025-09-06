@@ -87,7 +87,10 @@ public class GraphMailService
 
         // Move all messages
         var msgs = await _graph.Me.MailFolders[ticketFolder.Id!].Messages.GetAsync(q => q.QueryParameters.Top = 100);
-        foreach (var m in msgs!.Value!) await MoveSelectedAsync(m.Id!, newFolder.Id!);
+        foreach (Message m in msgs!.Value!)
+        {
+            await MoveSelectedAsync(m.Id!, newFolder.Id!);
+        }
 
         // Disable rule
         var rules = await _graph.Me.MailFolders["inbox"].MessageRules.GetAsync();
@@ -101,9 +104,12 @@ public class GraphMailService
 
     private async Task<MailFolder> GetOrCreateChildAsync(string parentId, string name)
     {
-        var kids = await _graph.Me.MailFolders[parentId].ChildFolders
+        MailFolderCollectionResponse? kids = await _graph.Me.MailFolders[parentId].ChildFolders
             .GetAsync(q => q.QueryParameters.Filter = $"displayName eq '{name.Replace("'", "''")}'");
         if (kids?.Value?.Any() == true) return kids.Value.First();
-        return await _graph.Me.MailFolders[parentId].ChildFolders.PostAsync(new() { DisplayName = name })!;
+        var created = await _graph.Me.MailFolders[parentId].ChildFolders.PostAsync(new() { DisplayName = name });
+        if (created == null)
+            throw new InvalidOperationException($"Failed to create mail folder '{name}' under parent '{parentId}'.");
+        return created!;
     }
 }
