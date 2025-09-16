@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="support\" />
     <Folder Include="wwwroot\client\assets\" />
   </ItemGroup>
 

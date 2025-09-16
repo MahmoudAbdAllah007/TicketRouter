@@ -19,7 +19,7 @@
 	<HighResolutionIconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-64.png"/>
 
 	<!-- Required by validator -->
-	<SupportUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/support"/> 
+	<SupportUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/support/support.html"/> 
 
 	<!-- AppDomains must be secured, non-localhost, and valid -->
 	<AppDomains>
@@ -29,20 +29,6 @@
 	<Hosts>
 		<Host Name="Mailbox"/>
 	</Hosts>
-
-	<Requirements>
-		<Sets DefaultMinVersion="1.13">
-			<Set Name="Mailbox" MinVersion="1.13"/>
-		</Sets>
-	</Requirements>
-	
-	<!-- Permissions can be ReadItem, ReadWriteItem, ReadWriteMailbox -->
-	<Permissions>ReadWriteMailbox</Permissions>
-	
-	<!-- IMPORTANT: Rule must come AFTER Permissions -->
-	<Rule xsi:type="RuleCollection" Mode="Or">
-		<Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
-	</Rule>
 	
 	<VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
 		<Runtimes>
@@ -53,6 +39,12 @@
 				<Set Name="Mailbox" MinVersion="1.13"/>
 			</Sets>
 		</Requirements>
+		<!-- Permissions can be ReadItem, ReadWriteItem, ReadWriteMailbox -->
+		<Permissions>ReadWriteMailbox</Permissions>
+		<!-- IMPORTANT: Rule must come AFTER Permissions -->
+		<Rule xsi:type="RuleCollection" Mode="Or">
+			<Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+		</Rule>
 		<Hosts>
 			<Host xsi:type="Mailbox">
 				<DesktopFormFactor>
