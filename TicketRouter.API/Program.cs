@@ -23,8 +23,12 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("Outlook",
         policy => policy
-            .WithOrigins("https://outlook.office.com", "https://outlook.office365.com",
-                         "https://*.outlook.com", "https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:5001", "https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net:3000")
+            .WithOrigins("https://outlook.office.com", 
+                         "https://outlook.office365.com",
+                         "https://*.outlook.com", 
+                         "https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net", 
+                         "https://mahlab.net" ,
+                         "https://localhost:3000")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials());
