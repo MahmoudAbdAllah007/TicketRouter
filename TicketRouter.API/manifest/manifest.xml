@@ -18,6 +18,8 @@
 	<!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
 	<AppDomains>
 		<AppDomain>https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net</AppDomain>
+		<AppDomain>https://mahlab.net</AppDomain>
+		<AppDomain>https://localhost</AppDomain>
 	</AppDomains>
 	<Hosts>
 		<Host Name="Mailbox" />

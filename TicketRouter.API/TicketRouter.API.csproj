@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="support\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\client\support.html" />
   </ItemGroup>
 
