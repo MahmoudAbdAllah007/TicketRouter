@@ -14,7 +14,7 @@
 	<Description DefaultValue="Automatically create and route Outlook emails into case folders by ticket number."/>
 	<IconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-32.png"/>
 	<HighResolutionIconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-64.png"/>
-	<SupportUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net"/>
+	<SupportUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/support.html"/>
 	<!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
 	<AppDomains>
 		<AppDomain>https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net</AppDomain>
