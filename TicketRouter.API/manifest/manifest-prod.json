@@ -1,0 +1,83 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/office-addin/1.0/officeAddin.schema.json",
+  "id": "d93e714c-3281-4f5b-b99f-2d8d88422a48",
+  "version": "1.0.0.0",
+  "provider": {
+    "name": "Ticket Routing Add-in"
+  },
+  "displayName": {
+    "default": "Ticket Router"
+  },
+  "description": {
+    "default": "Automatically create and route Outlook emails into case folders by ticket number."
+  },
+  "icons": {
+    "outline": "https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-32.png",
+    "color": "https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-64.png"
+  },
+  "supportUrls": {
+    "default": "https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/support.html"
+  },
+  "hosts": [
+    {
+      "name": "Mailbox"
+    }
+  ],
+  "requirements": {
+    "scopes": [
+      {
+        "name": "Mailbox",
+        "minVersion": "1.5"
+      }
+    ]
+  },
+  "authorization": {
+    "permissions": [
+      "ReadWriteMailbox"
+    ]
+  },
+  "runtime": {
+    "type": "javascript",
+    "code": [
+      {
+        "id": "functionFile",
+        "url": "https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/taskpane.js"
+      }
+    ]
+  },
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": [
+          {
+            "name": "Mailbox",
+            "minVersion": "1.5"
+          }
+        ]
+      },
+      "hosts": [
+        {
+          "name": "Mailbox",
+          "forms": [
+            {
+              "form": "messageRead",
+              "actions": [
+                {
+                  "id": "openPane",
+                  "type": "showTaskPane",
+                  "title": "Route to Ticket",
+                  "icon": {
+                    "outline": "https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-32.png",
+                    "color": "https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-64.png"
+                  },
+                  "sourceLocation": "https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/taskpane.html",
+                  "tooltip": "Open task pane to detect TrackingID and route message."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

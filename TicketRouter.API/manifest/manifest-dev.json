@@ -1,0 +1,113 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/officeapps/v1.1/mailappmanifest.schema.json",
+  "id": "c9e2f38f-3d4b-4a3d-9b3f-123456789abc",
+  "version": "1.0.0.0",
+  "provider": {
+    "name": "Ticket Router Dev"
+  },
+  "name": {
+    "short": "Ticket Router (Dev)",
+    "full": "Ticket Router Add-in (Development)"
+  },
+  "description": {
+    "short": "Route emails into folders by ticket number (Dev).",
+    "full": "Development sideload of the Ticket Router add-in to detect ticket numbers in Outlook messages and automatically route them into folders."
+  },
+  "icons": {
+    "16": "https://localhost/client/assets/icon-32.png",
+    "32": "https://localhost/client/assets/icon-32.png",
+    "80": "https://localhost/client/assets/icon-80.png"
+  },
+  "supportUrls": {
+    "default": "https://localhost/client/support.html"
+  },
+  "requirements": {
+    "scopes": [ "Mailbox.ReadWrite" ],
+    "sets": [
+      {
+        "name": "Mailbox",
+        "minVersion": "1.5"
+      }
+    ]
+  },
+  "authorization": {
+    "permissions": [ "Mailbox.ReadWrite" ]
+  },
+  "runtimes": [
+    {
+      "id": "Commands",
+      "type": "general",
+      "code": {
+        "page": "https://localhost/client/taskpane.js"
+      }
+    }
+  ],
+  "extension": {
+    "requirements": {
+      "capabilities": [ "Mailbox" ]
+    },
+    "hosts": [ "Mailbox" ],
+    "surfaces": {
+      "messageRead": {
+        "tabs": [
+          {
+            "id": "ticketRouterTab",
+            "label": "Ticket Tools",
+            "groups": [
+              {
+                "id": "ticketRouterGroup",
+                "label": "Ticket Router",
+                "controls": [
+                  {
+                    "id": "openTaskPaneButton",
+                    "type": "button",
+                    "label": "Route to Ticket",
+                    "icon": {
+                      "16": "https://localhost/client/assets/icon-32.png",
+                      "32": "https://localhost/client/assets/icon-32.png",
+                      "80": "https://localhost/client/assets/icon-80.png"
+                    },
+                    "action": {
+                      "type": "showTaskPane",
+                      "page": "https://localhost/client/taskpane.html"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "messageCompose": {
+        "tabs": [
+          {
+            "id": "ticketRouterTabCompose",
+            "label": "Ticket Tools",
+            "groups": [
+              {
+                "id": "ticketRouterGroupCompose",
+                "label": "Ticket Router",
+                "controls": [
+                  {
+                    "id": "openTaskPaneButtonCompose",
+                    "type": "button",
+                    "label": "Route to Ticket",
+                    "icon": {
+                      "16": "https://localhost/client/assets/icon-32.png",
+                      "32": "https://localhost/client/assets/icon-32.png",
+                      "80": "https://localhost/client/assets/icon-80.png"
+                    },
+                    "action": {
+                      "type": "showTaskPane",
+                      "page": "https://localhost/client/taskpane.html"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
