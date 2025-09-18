@@ -99,6 +99,13 @@
 					<bt:String id="residOpenPaneDesc" DefaultValue="Open task pane to detect TrackingID and route message."/>
 				</bt:LongStrings>
 			</Resources>
+			<WebApplicationInfo>
+				<Id>00000003-0000-0ff1-ce00-000000000000</Id>
+				<Resource>https://outlook.office365.com/</Resource>
+				<Scopes>
+					<Scope>Mailbox.ReadWrite</Scope>
+				</Scopes>
+			</WebApplicationInfo>
 		</VersionOverrides>
 	</VersionOverrides>
 </OfficeApp>
