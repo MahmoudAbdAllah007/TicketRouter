@@ -69,7 +69,7 @@
 						<ExtensionPoint xsi:type="MessageReadCommandSurface">
 							<OfficeTab id="TabDefault">
 								<Group id="grp.Ticket">
-									<Label resid="Ticket Tools"/>
+									<Label resid="TicketTools"/>
 									<Control xsi:type="Button" id="btn.OpenPane">
 										<Label resid="residOpenPaneLabel" />
 										<Supertip>
@@ -104,7 +104,8 @@
 					<bt:Url id="TaskPane.Script.Url" DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/taskpane.js"/>
 				</bt:Urls>
 				<bt:ShortStrings>
-					<bt:String id="residOpenPaneLabel" DefaultValue="Route to Ticket"/>
+					<bt:String id="TicketTools" DefaultValue="TicketTools"/>
+					<bt:String id="residOpenPaneLabel" DefaultValue="Open Ticket Router" />
 				</bt:ShortStrings>
 				<bt:LongStrings>
 					<bt:String id="residOpenPaneDesc" DefaultValue="Open task pane to detect TrackingID and route message."/>
