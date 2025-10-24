@@ -13,9 +13,9 @@
 	<DefaultLocale>en-US</DefaultLocale>
 	<DisplayName DefaultValue="Ticket Router (Dev)" />
 	<Description DefaultValue="Route emails into folders based on ticket number. Development sideload." />
-	<IconUrl DefaultValue="https://localhost:3000/client/assets/icon-32.png" />
-	<HighResolutionIconUrl DefaultValue="https://localhost:3000/client/assets/icon-64.png" />
-	<SupportUrl DefaultValue="https://localhost:3000/client/support.html" />
+	<IconUrl DefaultValue="https://localhost:44304/client/assets/icon-32.png" />
+	<HighResolutionIconUrl DefaultValue="https://localhost:44304/client/assets/icon-80.png" />
+	<SupportUrl DefaultValue="https://localhost:44304/client/support.html" />
 	<AppDomains>
 		<AppDomain>https://mahlab.net</AppDomain>
 	</AppDomains>
@@ -30,7 +30,7 @@
 	<FormSettings>
 		<Form xsi:type="ItemRead">
 			<DesktopSettings>
-				<SourceLocation DefaultValue="https://localhost:3000/client/taskpane.html"/>
+				<SourceLocation DefaultValue="https://localhost:44304/client/taskpane.html"/>
 				<RequestedHeight>250</RequestedHeight>
 			</DesktopSettings>
 		</Form>
@@ -67,6 +67,7 @@
 										<Description resid="residOpenPaneDesc"/>
 									</Supertip>
 									<Icon>
+										<bt:Image size="16" resid="icon16"/>
 										<bt:Image size="32" resid="icon32"/>
 										<bt:Image size="80" resid="icon80"/>
 									</Icon>
@@ -105,12 +106,13 @@
 
 		<Resources>
 			<bt:Images>
-				<bt:Image id="icon32" DefaultValue="https://localhost:3000/client/assets/icon-32.png"/>
-				<bt:Image id="icon80" DefaultValue="https://localhost:3000/client/assets/icon-80.png"/>
+				<bt:Image id="icon16" DefaultValue="https://localhost:44304/client/assets/icon-16.png"/>
+				<bt:Image id="icon32" DefaultValue="https://localhost:44304/client/assets/icon-32.png"/>
+				<bt:Image id="icon80" DefaultValue="https://localhost:44304/client/assets/icon-80.png"/>
 			</bt:Images>
 			<bt:Urls>
-				<bt:Url id="TaskPane.Page.Url" DefaultValue="https://localhost:3000/client/taskpane.html"/>
-				<bt:Url id="TaskPane.Script.Url" DefaultValue="https://localhost:3000/client/taskpane.js"/>
+				<bt:Url id="TaskPane.Page.Url" DefaultValue="https://localhost:44304/client/taskpane.html"/>
+				<bt:Url id="TaskPane.Script.Url" DefaultValue="https://localhost:44304/client/taskpane.js"/>
 			</bt:Urls>
 			<bt:ShortStrings>
 				<bt:String id="residOpenPaneLabel" DefaultValue="Route to Ticket"/>

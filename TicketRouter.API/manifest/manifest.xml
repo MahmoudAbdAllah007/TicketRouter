@@ -16,7 +16,7 @@
 
 <!-- URLs -->
 	<IconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-32.png"/>
-	<HighResolutionIconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-64.png"/>
+	<HighResolutionIconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-80.png"/>
 	<SupportUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/support.html"/>
 
 <!-- Domain whitelist -->
@@ -77,6 +77,7 @@
 											<Description resid="residOpenPaneDesc" />
 										</Supertip>
 										<Icon>
+											<bt:Image size="16" resid="icon16" />
 											<bt:Image size="32" resid="icon32" />
 											<bt:Image size="80" resid="icon80" />
 										</Icon>
@@ -94,8 +95,9 @@
 <!-- Localized strings and resources -->
 			<Resources>
 				<bt:Images>
+					<bt:Image id="icon16" DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-16.png"/>
 					<bt:Image id="icon32" DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-32.png"/>
-					<bt:Image id="icon80" DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-64.png"/>
+					<bt:Image id="icon80" DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-80.png"/>
 				</bt:Images>
 				<bt:Urls>
 					<bt:Url id="TaskPane.Page.Url" DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/taskpane.html"/>
