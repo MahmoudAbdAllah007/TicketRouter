@@ -1,41 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <OfficeApp
-          xmlns="http://schemas.microsoft.com/office/appforoffice/"
+          xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+		  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
           xsi:type="MailApp">
 
+<!-- Basic identification -->	
 	<Id>D93E714C-3281-4F5B-B99F-2D8D88422A48</Id>
 	<Version>1.0.0.0</Version>
 	<ProviderName>Ticket Routing Add-in</ProviderName>
 	<DefaultLocale>en-US</DefaultLocale>
 	<DisplayName DefaultValue="Ticket Router"/>
 	<Description DefaultValue="Automatically create and route Outlook emails into case folders by ticket number."/>
+
+<!-- URLs -->
 	<IconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-32.png"/>
 	<HighResolutionIconUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-64.png"/>
 	<SupportUrl DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/support.html"/>
-	<!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
+
+<!-- Domain whitelist -->
 	<AppDomains>
-		<AppDomain>https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net</AppDomain>
-		<AppDomain>https://mahlab.net</AppDomain>
+		<AppDomain>https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/</AppDomain>
+		<AppDomain>https://mahlab.net/</AppDomain>
 	</AppDomains>
+	
+<!-- This defines it as an Outlook add-in -->
 	<Hosts>
 		<Host Name="Mailbox" />
 	</Hosts>
+	
+<!-- Requirements -->
 	<Requirements>
-		<Sets>
-			<Set Name="Mailbox" MinVersion="1.1" />
+		<Sets DefaultMinVersion="1.1">
+			<Set Name="Mailbox" />
 		</Sets>
 	</Requirements>
+	
 	<FormSettings>
 		<Form xsi:type="ItemRead">
 			<DesktopSettings>
 				<SourceLocation DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/taskpane.html"/>
-				<RequestedHeight>350</RequestedHeight>
+				<RequestedHeight>250</RequestedHeight>
 			</DesktopSettings>
 		</Form>
 	</FormSettings>
-	
+
 <!-- Permissions -->
 	<Permissions>ReadWriteItem</Permissions>
 	
@@ -44,16 +54,17 @@
 		<Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
 	</Rule>
 	<DisableEntityHighlighting>false</DisableEntityHighlighting>
-	
+
+
 <!-- VersionOverrides defines UI and commands -->
-	<VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+	<VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
 			<Requirements>
 				<bt:Sets DefaultMinVersion="1.3">
 					<bt:Set Name="Mailbox" />
 				</bt:Sets>
 			</Requirements>
 			<Hosts>
-				<Host xsi:type="Mailbox">
+				<Host xsi:type="MailHost">
 					<DesktopFormFactor>
 						<ExtensionPoint xsi:type="MessageReadCommandSurface">
 							<OfficeTab id="TabDefault">
@@ -79,7 +90,8 @@
 					</DesktopFormFactor>
 				</Host>
 			</Hosts>
-
+		
+<!-- Localized strings and resources -->
 			<Resources>
 				<bt:Images>
 					<bt:Image id="icon32" DefaultValue="https://ticketrouterapi-ecd7h3b6a6cme3g8.canadacentral-01.azurewebsites.net/client/assets/icon-32.png"/>
