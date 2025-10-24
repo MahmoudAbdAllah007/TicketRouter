@@ -13,9 +13,9 @@
 	<DefaultLocale>en-US</DefaultLocale>
 	<DisplayName DefaultValue="Ticket Router (Dev)" />
 	<Description DefaultValue="Route emails into folders based on ticket number. Development sideload." />
-	<IconUrl DefaultValue="https://localhost/client/assets/icon-32.png" />
-	<HighResolutionIconUrl DefaultValue="https://localhost/client/assets/icon-64.png" />
-	<SupportUrl DefaultValue="https://localhost/client/support.html" />
+	<IconUrl DefaultValue="https://localhost:3000/client/assets/icon-32.png" />
+	<HighResolutionIconUrl DefaultValue="https://localhost:3000/client/assets/icon-64.png" />
+	<SupportUrl DefaultValue="https://localhost:3000/client/support.html" />
 	<AppDomains>
 		<AppDomain>https://mahlab.net</AppDomain>
 	</AppDomains>
@@ -105,12 +105,12 @@
 
 		<Resources>
 			<bt:Images>
-				<bt:Image id="icon32" DefaultValue="https://localhost/client/assets/icon-32.png"/>
-				<bt:Image id="icon80" DefaultValue="https://localhost/client/assets/icon-80.png"/>
+				<bt:Image id="icon32" DefaultValue="https://localhost:3000/client/assets/icon-32.png"/>
+				<bt:Image id="icon80" DefaultValue="https://localhost:3000/client/assets/icon-80.png"/>
 			</bt:Images>
 			<bt:Urls>
-				<bt:Url id="TaskPane.Page.Url" DefaultValue="https://localhost/client/taskpane.html"/>
-				<bt:Url id="TaskPane.Script.Url" DefaultValue="https://localhost/client/taskpane.js"/>
+				<bt:Url id="TaskPane.Page.Url" DefaultValue="https://localhost:3000/client/taskpane.html"/>
+				<bt:Url id="TaskPane.Script.Url" DefaultValue="https://localhost:3000/client/taskpane.js"/>
 			</bt:Urls>
 			<bt:ShortStrings>
 				<bt:String id="residOpenPaneLabel" DefaultValue="Route to Ticket"/>
