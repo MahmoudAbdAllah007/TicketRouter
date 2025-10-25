@@ -3,7 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <title>Ticket Router</title>
-    https://appsforoffice.microsoft.com/lib/1/hosted/office.js</script>
+
+    <!-- ✅ Load Office.js first -->
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
     <style>
         body {
             font-family: Segoe UI, Arial;
@@ -43,17 +46,17 @@
             margin-top: 12px;
         }
     </style>
+
 </head>
 <body>
     <h2>Ticket Router</h2>
-    <div class="row"><small>Matches <code>TrackingID#&lt;15+ digits&gt;</code> in the subject.</small></div>
     <div class="row">
         <label>Detected TrackingID</label>
-        <input id="txtTicket" placeholder="e.g., 2507301420002767" />
+        <input id="txtTicket" placeholder="e.g., 25073014xxxxxxxx" />
     </div>
     <div class="row">
-        <label>Folder short name (optional)</label>
-        <input id="txtShort" placeholder="Customer or context" />
+        <label>Folder Name (Optional)</label>
+        <input id="txtShort" placeholder="Customer or Context" />
     </div>
     <div class="row">
         <button id="btnRoute">Create & Move selected email</button>
@@ -61,6 +64,7 @@
     </div>
     <div id="status" class="status"></div>
 
-    /client/taskpane.js</script>
+    <!-- ✅ Correct way to load your JS -->
+    <script src="/client/taskpane.js"></script>
 </body>
 </html>
