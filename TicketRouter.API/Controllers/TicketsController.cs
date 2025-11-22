@@ -7,10 +7,9 @@ namespace TicketRouter.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [Authorize] // requires the bearer token from Office.auth.getAccessToken
-public class TicketsController : ControllerBase
+public class TicketsController(GraphMailService svc) : ControllerBase
 {
-    private readonly GraphMailService _svc;
-    public TicketsController(GraphMailService svc) => _svc = svc;
+    private readonly GraphMailService _svc = svc;
 
     public record RouteSelectedRequest(string MessageId, string Subject, string? ShortName);
     public record SentRouteRequest(string MessageId, string Subject);

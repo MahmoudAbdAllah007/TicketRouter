@@ -1,21 +1,28 @@
-﻿using Microsoft.Graph;
+﻿using System.Text.RegularExpressions;
+using System.Diagnostics.CodeAnalysis;
+using Microsoft.Graph;
 using Microsoft.Graph.Models;
 
 namespace TicketRouter.Api.Services;
 
-public class GraphMailService
+// Add 'partial' to the main class declaration
+public partial class GraphMailService(GraphServiceClient graph)
 {
-    private readonly GraphServiceClient _graph;
+    private readonly GraphServiceClient _graph = graph;
 
-    public GraphMailService(GraphServiceClient graph) => _graph = graph;
+    // Extracts TrackingID#<number> from subject line
+    [GeneratedRegex(@"TrackingID#(\d{15,})")]
+    private static partial Regex TrackingIdRegex();
 
     public static string? ExtractTrackingId(string? subject)
     {
-        if (string.IsNullOrEmpty(subject)) return null;
-        var m = System.Text.RegularExpressions.Regex.Match(subject, @"TrackingID#(\d{15,})");
+        if (string.IsNullOrEmpty(subject))
+            return null;
+        var m = TrackingIdRegex().Match(subject);
         return m.Success ? m.Groups[1].Value : null;
     }
 
+    // Ensures folder Inbox/Active/<ticketId – shortName>
     public async Task<string> EnsureTicketFolderAsync(string ticketId, string? shortName = null)
     {
         // Get Inbox
@@ -32,6 +39,7 @@ public class GraphMailService
         return ticket.Id!;
     }
 
+    // Upsert message rule for ticket
     public async Task UpsertRuleAsync(string ticketId, string folderId, bool enable = true)
     {
         var rules = await _graph.Me.MailFolders["inbox"].MessageRules.GetAsync();
@@ -43,7 +51,7 @@ public class GraphMailService
             IsEnabled = enable,
             Conditions = new MessageRulePredicates
             {
-                SubjectContains = new List<string> { $"TrackingID#{ticketId}" }
+                SubjectContains = [ $"TrackingID#{ticketId}" ]
             },
             Actions = new MessageRuleActions
             {
@@ -58,12 +66,15 @@ public class GraphMailService
             await _graph.Me.MailFolders["inbox"].MessageRules.PostAsync(body);
     }
 
+    // Move selected message to destination folder
     public async Task MoveSelectedAsync(string messageId, string destinationFolderId)
         => await _graph.Me.Messages[messageId].Move.PostAsync(new() { DestinationId = destinationFolderId });
 
+    // Copy sent message to destination folder
     public async Task CopySentAsync(string messageId, string destinationFolderId)
         => await _graph.Me.Messages[messageId].Copy.PostAsync(new() { DestinationId = destinationFolderId });
 
+    // Close ticket: move folder from Active to Closed and disable rule
     public async Task<string> CloseTicketAsync(string ticketId)
     {
         // Find Inbox/Active/<ticket…> and recreate in Inbox/Closed
@@ -87,9 +98,15 @@ public class GraphMailService
 
         // Move all messages
         var msgs = await _graph.Me.MailFolders[ticketFolder.Id!].Messages.GetAsync(q => q.QueryParameters.Top = 100);
-        foreach (Message m in msgs!.Value!)
+        if (msgs?.Value != null)
         {
-            await MoveSelectedAsync(m.Id!, newFolder.Id!);
+            foreach (Message m in msgs.Value)
+            {
+                if (m?.Id != null && newFolder?.Id != null)
+                {
+                    await MoveSelectedAsync(m.Id, newFolder.Id);
+                }
+            }
         }
 
         // Disable rule
@@ -102,13 +119,14 @@ public class GraphMailService
         return "Ticket closed and folder moved to Closed.";
     }
 
+    // Helper to get or create child folder by name
     private async Task<MailFolder> GetOrCreateChildAsync(string parentId, string name)
     {
         MailFolderCollectionResponse? kids = await _graph.Me.MailFolders[parentId].ChildFolders
             .GetAsync(q => q.QueryParameters.Filter = $"displayName eq '{name.Replace("'", "''")}'");
-        if (kids?.Value?.Any() == true) return kids.Value.First();
+        if (kids?.Value?.Count > 0) return kids.Value.First();
         var created = await _graph.Me.MailFolders[parentId].ChildFolders.PostAsync(new() { DisplayName = name });
-        if (created == null)
+        if (created is null)
             throw new InvalidOperationException($"Failed to create mail folder '{name}' under parent '{parentId}'.");
         return created!;
     }
