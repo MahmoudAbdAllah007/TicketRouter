@@ -21,11 +21,9 @@ public class TicketsController(GraphMailService svc) : ControllerBase
     {
         var ticketId = GraphMailService.ExtractTrackingId(dto.Subject);
         if (ticketId is null) return BadRequest("No TrackingID found in subject.");
-
         var folderId = await _svc.EnsureTicketFolderAsync(ticketId, dto.ShortName);
-        await _svc.UpsertRuleAsync(ticketId, folderId, true);
+        await _svc.UpsertRuleAsync(ticketId, folderId, enable: true);
         await _svc.MoveSelectedAsync(dto.MessageId, folderId);
-
         return Ok(new { ticketId, folderId, status = "routed" });
     }
 
@@ -34,18 +32,17 @@ public class TicketsController(GraphMailService svc) : ControllerBase
     {
         var ticketId = GraphMailService.ExtractTrackingId(dto.Subject);
         if (ticketId is null) return Ok(new { status = "no-ticket" });
-
         var folderId = await _svc.EnsureTicketFolderAsync(ticketId);
-        await _svc.UpsertRuleAsync(ticketId, folderId, true);
+        await _svc.UpsertRuleAsync(ticketId, folderId, enable: true);
         await _svc.CopySentAsync(dto.MessageId, folderId);
-
         return Ok(new { ticketId, status = "copied" });
     }
 
+    // ✅ Updated to only toggle rule state without changing its destination
     [HttpPost("state")]
     public async Task<IActionResult> SetRuleState([FromBody] RuleStateRequest dto)
     {
-        await _svc.UpsertRuleAsync(dto.TicketId, folderId: "inbox", enable: dto.Enable); // PATCH only
+        await _svc.PatchRuleStateAsync(dto.TicketId, dto.Enable);   // <-- use the new method
         return Ok(new { status = dto.Enable ? "Rule enabled" : "Rule disabled" });
     }
 
