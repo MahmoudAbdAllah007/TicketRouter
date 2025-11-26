@@ -108,6 +108,9 @@
 				<Scope>Mail.ReadWrite</Scope>
 				<Scope>MailboxSettings.Read</Scope>
 				<Scope>api://28e7ca7f-b984-4b33-b03b-f548142f89fb/access_as_user</Scope>
+				 <Scope>openid</Scope>
+				 <Scope>profile</Scope>
+				 <Scope>offline_access</Scope>
 			  </Scopes>
 			</WebApplicationInfo>
 		</VersionOverrides>
