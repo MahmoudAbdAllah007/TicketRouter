@@ -99,5 +99,17 @@
 				<bt:String id="residOpenPaneDesc" DefaultValue="residOpenPaneDesc"/>
 			</bt:LongStrings>
 		</Resources>
+		
+		<VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+			<WebApplicationInfo>
+			  <Id>28e7ca7f-b984-4b33-b03b-f548142f89fb</Id>
+			  <Resource>api://28e7ca7f-b984-4b33-b03b-f548142f89fb</Resource>
+			  <Scopes>
+				<Scope>Mail.ReadWrite</Scope>
+				<Scope>MailboxSettings.Read</Scope>
+				<Scope>api://28e7ca7f-b984-4b33-b03b-f548142f89fb/access_as_user</Scope>
+			  </Scopes>
+			</WebApplicationInfo>
+		</VersionOverrides>
 	</VersionOverrides>
 </OfficeApp>
