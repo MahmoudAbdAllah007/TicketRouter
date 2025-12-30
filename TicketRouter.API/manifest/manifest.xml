@@ -118,7 +118,6 @@
 					<Scope>access_as_user</Scope>
 					<Scope>Mail.ReadWrite</Scope>
 					<Scope>MailboxSettings.Read</Scope>
-					<Scope>User.Read</Scope>
 					<Scope>openid</Scope>
 					<Scope>profile</Scope>
 				</Scopes>
