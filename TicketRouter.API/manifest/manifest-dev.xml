@@ -20,7 +20,7 @@
 
 <!-- Domain whitelist -->
 	<AppDomains>
-		<AppDomain>https://www.mahlab.net</AppDomain>
+		<AppDomain>https://mahlab.net</AppDomain>
 	</AppDomains>
 
 <!-- This defines it as an Outlook add-in -->
